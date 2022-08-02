@@ -1,0 +1,134 @@
+### Provision request
+POST http://0.0.0.0:8000/service-event HTTP/2
+Content-Type: application/json
+Host: localhost
+Date: Sun, 05 Jan 2014 21:31:40 GMT
+Authorization: Signature keyId="Test",algorithm="hmac-sha256",headers="(request-target) date",signature="qdx+H7PHHDZgy4y/Ahn9Tny9V3GP6YgBPyUXMmoxWtLbHpUnXS2mg2+SbrQDMCJypxBLSPQR2aAjn7ndmw2iicw3HMbe8VfEdKFYRqzic+efkb3nndiv/x1xSHDJWeSWkx3ButlYSuBskLu6kd9Fswtemr3lgdDEmn04swr2Os0="
+
+{
+  "type": "provision",
+  "provider_handoff": {
+    "vlan": "20",
+    "circuitId": "TEST-SPC-1"
+  },
+  "service": {
+    "type": "data",
+    "detail": {
+      "data": {
+        "downloadSpeedKbps": 500000,
+        "uploadSpeedKbps": 500000
+      }
+    }
+  },
+  "callback_urls": {
+    "success": "http://url.here/api/sonar-integration/provisions/DINAMIC_ID?type=success",
+    "error": "http://url.here/api/sonar-integration/provisions/DINAMIC_ID?type=error",
+    "status": "http://url.here/api/sonar-integration/provisions/DINAMIC_ID?type=status"
+  },
+  "subscription_id": "d81446c0-5547-4cc3-8223-2f51f482b48b",
+  "underline_account_id": "35c94995-8b8e-42ab-94d8-bee0d2457a1b",
+  "sonar_account_id": "3942936"
+}
+
+### 2nd Provision request
+POST http://127.0.0.1:8000/service-event
+Content-Type: application/json
+
+{
+  "type": "provision",
+  "provider_handoff": {
+    "vlan": "20",
+    "circuitId": "TEST-SPC-1"
+  },
+  "service": {
+    "type": "data",
+    "detail": {
+      "data": {
+        "downloadSpeedKbps": 500000,
+        "uploadSpeedKbps": 500000
+      }
+    }
+  },
+  "callback_urls": {
+    "success": "http://url.here/api/sonar-integration/provisions/DINAMIC_ID?type=success",
+    "error": "http://url.here/api/sonar-integration/provisions/DINAMIC_ID?type=error",
+    "status": "http://url.here/api/sonar-integration/provisions/DINAMIC_ID?type=status"
+  },
+  "subscription_id": "d81446c0-5547-4cc3-8223-2f51f482b48b",
+  "underline_account_id": "35c94995-8b8e-42ab-94d8-bee0d2457a1b",
+  "sonar_account_id": "3942936"
+}
+
+### Replace request
+POST http://127.0.0.1:8000/service-event
+Content-Type: application/json
+
+{
+  "type": "replace",
+  "old_provider_handoff": {
+    "vlan": "3",
+    "circuitId": "CKT-R0-S2-A-MOCK-1"
+  },
+  "old_service": {
+    "type": "data",
+    "detail": {
+      "data": {
+        "downloadSpeedKbps": 500000,
+        "uploadSpeedKbps": 500000
+      }
+    }
+  },
+  "new_provider_handoff": {
+    "vlan": "13",
+    "circuitId": "swp3"
+  },
+  "new_service": {
+    "type": "data",
+    "detail": {
+      "data": {
+        "downloadSpeedKbps": 10000000,
+        "uploadSpeedKbps": 10000000
+      }
+    }
+  },
+  "callback_urls": {
+    "success": "https://app.i-s.underline.com/api/sonar-integration/provisions/6f1ede5c-d69b-430f-a690-f581314ee443?type=success",
+    "error": "https://app.i-s.underline.com/api/sonar-integration/provisions/6f1ede5c-d69b-430f-a690-f581314ee443?type=error",
+    "status": "https://app.i-s.underline.com/api/sonar-integration/provisions/6f1ede5c-d69b-430f-a690-f581314ee443?type=status"
+  },
+  "underline_account_id": "7294a72f-43a7-4186-ad49-cea0d9799137",
+  "new_subscription_id": "d81446c0-5547-4cc3-8223-2f51f482b48b",
+  "old_subscription_id": "d2fd364f-d95a-4533-9a5d-84f23eb8881c",
+  "sonar_account_id": "3942926"
+}
+
+### Unprovision request
+POST http://127.0.0.1:8000/service-event
+Content-Type: application/json
+
+{
+  "type": "unprovision",
+  "provider_handoff": {
+    "vlan": "20",
+    "circuitId": "TEST-SPC-1"
+  },
+  "service": {
+    "type": "data",
+    "detail": {
+      "data": {
+        "downloadSpeedKbps": 500000,
+        "uploadSpeedKbps": 500000
+      }
+    }
+  },
+  "callback_urls": {
+    "success": "http://url.here/api/sonar-integration/provisions/DINAMIC_ID?type=success",
+    "error": "http://url.here/api/sonar-integration/provisions/DINAMIC_ID?type=error",
+    "status": "http://url.here/api/sonar-integration/provisions/DINAMIC_ID?type=status"
+  },
+  "subscription_id": "d81446c0-5547-4cc3-8223-2f51f482b48b",
+  "underline_account_id": "35c94995-8b8e-42ab-94d8-bee0d2457a1b",
+  "sonar_account_id": "3942936"
+}
+
+###
