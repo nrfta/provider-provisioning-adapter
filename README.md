@@ -85,7 +85,7 @@
    ```
 ## Scripts
 Scripts can be written in any language. The only requirements are this: it must be executable, and accept a single string argument as a positional param.
-The data being passed to the script is minified JSON string. The shape of the object differs between the CREATE/REMOVE scripts and MODIFY scripts - as seen below.
+The data being passed to the script is minified JSON string. The shape of the object differs between the CREATE/REMOVE scripts and the MODIFY script - as seen below.
 
 #### CREATE/REMOVE scripts data shape
 ```
