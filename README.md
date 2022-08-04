@@ -25,3 +25,4 @@
     ```
    cp .template.env .env
    ```
+3.
