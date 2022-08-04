@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools_scm[toml]"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
-write_to = "_version.py"
+write_to = "src/provider_provisioning_adapter/_version.py"
 
 [project]
 name = "provider_provisioning_adapter"
