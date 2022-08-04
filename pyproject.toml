@@ -1,10 +1,9 @@
 [build-system]
-requires = ["setuptools"]
+requires = ["setuptools", "setuptools_scm[toml]"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "provider_provisioning_adapter"
-version = "0.0.1"
 description = "Starterkit for working with Underline's Sonar integration."
 readme = "README.md"
 license = { file="LICENSE" }
@@ -15,6 +14,8 @@ dependencies = [
     "fastapi",
     "httpx"
 ]
+
+[tool.setuptools_scm]
 
 [project.scripts]
 ppa-serve = "provider_provisioning_adapter:serve"
