@@ -24,14 +24,14 @@ jobs:
         with:
           path: ./dist/*
 
-  upload_pypi:
+  create_release:
     needs: [build_ubuntu_20]
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ncipollo/release-action@v1
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: "*.tar.gz,*.whl"
-          token: ${{ secrets.YOUR_GITHUB_TOKEN }}
