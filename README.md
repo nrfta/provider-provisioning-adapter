@@ -25,4 +25,3 @@
     ```
    cp .template.env .env
    ```
-3. Run
