@@ -36,9 +36,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: package
-      - name: Display structure of downloaded files
-        run: ls -R
-#      - uses: ncipollo/release-action@v1
-#        with:
-#          token: ${{ secrets.GITHUB_TOKEN }}
-#          artifacts: "./*"
+      - uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: "./dist/*"
