@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "provider_provisioning_adapter"
+version = "0.0.1"
+description = "Starterkit for working with Underline's Sonar integration."
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+    "uvicorn",
+    "gunicorn",
+    "fastapi",
+    "httpx"
+]
+
+[project.scripts]
+ppa-serve = "provider_provisioning_adapter:serve"
