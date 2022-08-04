@@ -13,10 +13,11 @@ class Settings(BaseSettings):
     ppa_service_create: Path
     ppa_service_modify: Path
     ppa_service_remove: Path
-    ppa_service_timeout: int
-    ppa_key_id: str
-    ppa_key_secret: str
-    ppa_port: int
+    ppa_service_timeout: int = 180
+    # HTTP signatures not implemented in Sonar yet
+    # ppa_key_id: str
+    # ppa_key_secret: str
+    ppa_port: int = 8888
     ppa_log_level: constr(to_lower=True, regex='^(debug|info|warning|error)$')
     ppa_log_dir: str
 
