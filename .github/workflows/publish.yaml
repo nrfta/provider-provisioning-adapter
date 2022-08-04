@@ -36,6 +36,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: package
+          path: dist
       - uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
