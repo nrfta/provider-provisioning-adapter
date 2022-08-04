@@ -1,0 +1,18 @@
+[Unit]
+Description=Underline provider provisioning adapter
+After=network.target
+
+[Service]
+Type=notify
+User={{ USER }}
+Group={{ GROUP }}
+EnvironmentFile={{ APPLICATION_DIR}}/.env
+WorkingDirectory={{ APPLICATION_DIR }}
+ExecStart={{ EXEC_PATH }}
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

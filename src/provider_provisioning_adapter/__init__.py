@@ -1,6 +1,7 @@
 from gunicorn.app.base import BaseApplication
 
 from .main import app
+from .config import get_settings
 
 
 class PPAServer(BaseApplication):
@@ -20,8 +21,9 @@ class PPAServer(BaseApplication):
 
 
 def serve():
+    settings = get_settings()
     options = {
-        'bind': '%s:%s' % ('127.0.0.1', '8080'),
+        'bind': '%s:%s' % ('127.0.0.1', settings.ppa_port),
         'workers': 4,
         'worker-class': 'uvicorn.workers.UvicornWorker'
     }
