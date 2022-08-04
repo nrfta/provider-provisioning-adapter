@@ -20,7 +20,7 @@ dependencies = [
 dynamic = ["version"]
 
 [tool.setuptools.dynamic]
-version = {attr = "_version.version"}
+version = {attr = "provider_provisioning_adapter._version.version"}
 
 [project.scripts]
 ppa-serve = "provider_provisioning_adapter:serve"
