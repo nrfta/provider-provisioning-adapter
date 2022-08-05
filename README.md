@@ -156,6 +156,10 @@ The example uses [jq](https://stedolan.github.io/jq/). Install the dependency be
 #!/usr/bin/env bash
 # CREATE new service
 
+set -e  # Exit script on any failure. 
+        # Utilize flow control structures to check for errors. Use `exit 1` to signal there was an error
+        ## Example: if <condition failure>; then exit 1; fi;
+
 cid=$(jq -r '.provider_handoff.circuitId' <<< "$1")
 vid=$(jq -r '.provider_handoff.vlan' <<< "$1")
 customer_id=$(jq -r '.sonar_account_id' <<< "$1")
