@@ -1,7 +1,7 @@
 ## Setup (Debian/Ubuntu)
 ### Initialize Project
 1. Install python3.10 
-    ```
+    ```sh
     sudo apt update && sudo apt upgrade -y
     sudo apt install software-properties-common -y 
     sudo add-apt-repository ppa:deadsnakes/ppa
@@ -10,23 +10,23 @@
     python3.10 get-pip.py
     ```
 2. Verify installation
-    ```
+    ```sh
     python3.10 --version
     ```
 3. Create virtual environment
-   ```
+   ```sh
    mkdir {{ project_dir }}
    cd {{ project_dir }}
    python3.10 -m venv .venv
    source ./venv/bin/activate
    ```
 4. Install project dependencies
-   ```
+   ```sh
    pip install --upgrade pip setuptools
    pip install --find-links=https://github.com/nrfta/provider-provisioning-adapter/releases/latest provider-provisioning-adapter 
    ```
 5. Define environment variables
-   ```
+   ```sh
    # Paths to scripts. Must be executable by user
    export PPA_SERVICE_CREATE=  
    export PPA_SERVICE_MODIFY=
@@ -37,7 +37,7 @@
    export PPA_LOG_DIR=
    ```
 6. Run
-   ```
+   ```sh
    ppa-serve
    ```
 ### (Optional) systemd
@@ -63,9 +63,11 @@
    WantedBy=multi-user.target
    ```
 2. Reload daemon
-   ```sudo systemctl daemon-reload```
-3. Enable and start custom service
+   ```sh
+   sudo systemctl daemon-reload
    ```
+3. Enable and start custom service
+   ```sh
    sudo systemctl enable ppa
    sudo systemctl start ppa
    ```
@@ -75,7 +77,7 @@
 1. Install Caddy via package manager
    1. Instructions can be found on Caddy's website; [here](https://caddyserver.com/docs/install#debian-ubuntu-raspbian)
 2. edit /etc/caddy/Caddyfile
-   ```
+   ```sh
    sudo cat << EOF > /etc/caddy/Caddyfile
    {{ DOMAIN NAME }}
    
@@ -83,11 +85,11 @@
    EOF
    ```
 3. Reload caddy service after saving the new config
-   ```
+   ```sh
    sudo systemctl reload caddy 
    ```
 4. Verify caddy is up and running
-   ```
+   ```sh
    systemctl status caddy
    ```
 ## Scripts
@@ -95,7 +97,7 @@ Scripts can be written in any language. The only requirements are this: it must 
 The data being passed to the script is a minified JSON string. The shape of the object differs between the CREATE/REMOVE scripts and the MODIFY script - as seen below.
 
 #### CREATE/REMOVE scripts data shape
-```
+```sh
 {
   "provider_handoff": {
     "circuitId": "TEST-SPC-1",
@@ -116,7 +118,7 @@ The data being passed to the script is a minified JSON string. The shape of the 
 ```
 
 #### MODIFY script data shape
-```
+```sh
 {
   "old_provider_handoff": {
     "vlan": "3",
@@ -152,7 +154,7 @@ The data being passed to the script is a minified JSON string. The shape of the 
 
 ### Bash Example
 The example uses [jq](https://stedolan.github.io/jq/). Install the dependency before running the script: ```sudo apt install jq```
-```
+```sh
 #!/usr/bin/env bash
 # CREATE new service
 
