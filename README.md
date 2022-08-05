@@ -39,7 +39,7 @@
    ppa-serve
    ```
 ### (Optional) systemd
-- systemd service example:
+1. Create systemd service config
    ```
    [Unit]
    Description=Underline provider provisioning adapter
@@ -59,13 +59,19 @@
    
    [Install]
    WantedBy=multi-user.target
-  ```
+   ```
+2. Reload daemon
+   ```sudo systemctl daemon-reload```
+3. Enable and start custom service
+   ```
+   sudo systemctl enable ppa
+   sudo systemctl start ppa
+   ```
+4. Verify the service is functional
+   ```systemctl status ppa```
 ### (Optional) Reverse Proxy
 1. Install Caddy via package manager
-   ```
-   sudo apt update && sudo apt upgrade -y
-   sudo apt install caddy -y
-   ```
+   1. Instructions can be found on Caddy's website; [here](https://caddyserver.com/docs/install#debian-ubuntu-raspbian)
 2. edit /etc/caddy/Caddyfile
    ```
    sudo cat << EOF > /etc/caddy/Caddyfile
@@ -74,9 +80,8 @@
    reverse-proxy 127.0.0.1:{{ PPA_PORT }}
    EOF
    ```
-3. Enable/reload caddy service
+3. Reload caddy service after saving the new config
    ```
-   sudo systemctl enable --now caddy
    sudo systemctl reload caddy 
    ```
 4. Verify caddy is up and running
