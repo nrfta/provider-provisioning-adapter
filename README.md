@@ -97,7 +97,7 @@ Scripts can be written in any language. The only requirements are this: it must 
 The data being passed to the script is a minified JSON string. The shape of the object differs between the CREATE/REMOVE scripts and the MODIFY script - as seen below.
 
 #### CREATE/REMOVE scripts data shape
-```sh
+```json
 {
   "provider_handoff": {
     "circuitId": "TEST-SPC-1",
@@ -118,7 +118,7 @@ The data being passed to the script is a minified JSON string. The shape of the 
 ```
 
 #### MODIFY script data shape
-```sh
+```json
 {
   "old_provider_handoff": {
     "vlan": "3",
